@@ -13,6 +13,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<url-pattern>/tambola</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>getnum</servlet-name>
+		<servlet-class>com.siolabs.tambola.GetNumber</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>getnum</servlet-name>
+		<url-pattern>/getnum</url-pattern>
+	</servlet-mapping>
+	
 	 <security-constraint>
         <web-resource-collection>
             <url-pattern>/auth/*</url-pattern>
