@@ -21,7 +21,7 @@ public class GetNumber extends HttpServlet {
 		count = 1;
 		Random rg  = new Random();
 		while(count<90){
-			int num = rg.nextInt(90);
+			int num = rg.nextInt(90)+1;
 			if(!numbers.contains(num)){
 				count++;
 				numbers.add(num);

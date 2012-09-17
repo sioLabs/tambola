@@ -54,7 +54,8 @@
 	numbers. You will get a confirmation.</p>
 	<h5>Enjoy Playing.</h5>
 	
-	
+	<div id="textNextNum" >The Next number is : <span id="nextNum"></span></div>
+	<br />	
 	 	
 	<table border="1">
 	<%
@@ -62,7 +63,7 @@
 			out.println("<tr>");
 			for(int j=1;j<11;j++){
 				 //Create a table here. 3x10 1<table> tag 3 <tr> tag 10 <td> tag
-		     out.println("<td id=\""+i+"_"+j+"\" class=\"num\">12</td>");
+		     out.println("<td id=\""+i+"_"+j+"\" class=\"num\"></td>");
 			}out.println("</tr>"); 
 		}
 	%>
@@ -81,9 +82,11 @@
 
 
 <!-- footer -->
+
 <div class="row">
 	<div class="twelve columns links">
 		<!-- get the footer here -->
+		<hr />
 		<a href = "http://siolabs.com/about-tambola">About</a>
 		<a href = "http://siolabs.com/team-tambola">Team</a>
 		<a href = "http://siolabs.com/blog-tambola">Blog</a>
@@ -91,8 +94,9 @@
 	</div>
 </div>
 
-
+<script src="/javascripts/jquery.js"></script>
  <script src="/javascripts/tambola.js"></script>
+ 
 </body>
 </html>
 
