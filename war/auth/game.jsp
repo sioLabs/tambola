@@ -72,7 +72,9 @@
 	</div>
 	
 	<div class="four columns">
-		<div id="winner" class=" medium blue button">WINNER</div>
+		<div id="TopRow" class=" medium blue button">Top Row</div><br/><br/>
+		<div id="MiddleRow" class=" medium blue button">Middle Row</div><br/><br/>
+		<div id="BottomRow" class=" medium blue button">Bottom Row</div><br/>
 	</div>
 </div>
 
@@ -93,6 +95,10 @@
 		<a href = "http://github.com/siolabs/tambola">Source Code</a>
 	</div>
 </div>
+
+<div id = "testValue"></div>
+<div id = "testValue2"></div>
+<div id = "testValue3"></div>
 
 <script src="/javascripts/jquery.js"></script>
  <script src="/javascripts/tambola.js"></script>
