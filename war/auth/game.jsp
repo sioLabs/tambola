@@ -20,7 +20,7 @@
   <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
   
   <script src="/javascripts/modernizr.foundation.js"></script>
-
+  
   <!-- IE Fix for HTML5 Tags -->
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,45 +46,38 @@
 <!-- main body -->
 
 <div class="row">
-	<div id="body-left" class="eight columns body-left">
-	<!-- code here to tell the user about the rules and the button to start the game. -->
-		Hi, there
-		<p>
-		Tambola is game of luck and your responsiveness.You will be presented with a 3x10 grid which
-		will contain 15 numbers. Every 10 seconds you will be presented with a number. If that number
-		is on your grid. Click on the cell of the grid to strike out that number.
-		 	
-		</p>
-		<p>There are 5 patterns to find on your grid making you eligible of a prize.
-		<ul>
-			<li>Top Row</li>
-			<li>Middle Row</li>
-			<li>Bottom Row</li>
-			<li>Corner Numbers</li>
-			<li>Full House</li>	
-		</ul>
-		
-		</p>
-		<a id="demo" class="medium button blue">View Demo</a>
-		<a id="play" class="medium button blue">Start Playing</a>
-	</div>
+	<div class="eight columns">
+	<br />
+	<p>Here is your ticket. Whenever the number appears on your screen and that number
+	is present in your ticket click on that number so that it will be striked.</p>
+	<p>If you complete a pattern click on the button "WIN". If you have striked the right
+	numbers. You will get a confirmation.</p>
+	<h5>Enjoy Playing.</h5>
 	
+	
+	 	
+	<table border="1">
+	<%
+		for(int i=1;i<4;i++){
+			out.println("<tr>");
+			for(int j=1;j<11;j++){
+				 //Create a table here. 3x10 1<table> tag 3 <tr> tag 10 <td> tag
+		     out.println("<td id=\""+i+"_"+j+"\" class=\"num\">12</td>");
+			}out.println("</tr>"); 
+		}
+	%>
+	</table>
+	
+	</div>
 	
 	<div class="four columns">
-		<!--  code here for advertisements or perks or leader board -->
-		<h4>Create User Account</h4>
-		It just takes 20 seconds
-		<hr />
-		<form class="nice">
-		My name is :<br/>
-		<input type="text" name="name" />
-		<br/>
-		My email id is :<br/>
-		<input type="text" name="email" />
-		</form>
-				
+		<div id="winner" class=" medium blue button">WINNER</div>
 	</div>
 </div>
+
+
+
+
 
 
 <!-- footer -->
@@ -102,3 +95,4 @@
  <script src="/javascripts/tambola.js"></script>
 </body>
 </html>
+

@@ -1,6 +1,7 @@
 package com.siolabs.tambola;
 /*
- * the numbers can be generated onetime for a game and then it can send the numbers by checking the index
+ * the numbers can be generated one time for a game 
+ * and then it can send the numbers by checking the index.
  */
 
 import java.io.IOException;
@@ -26,9 +27,8 @@ public class GetNumber extends HttpServlet {
 				numbers.add(num);
 			}			
 		}
-
 	}
-
+	
 	public static int count = 0;
 	public static ArrayList<Integer> numbers = new ArrayList<Integer>();
 	

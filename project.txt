@@ -1,0 +1,3 @@
+for the first version I am thinking  about returning all the values to the client in one go and then the client can read the json data and display it one by one, reading from an array with the help of a jquery. Also use jsp to create a 3x10 array. 
+ Writing the jsp for the game ticket.Written. 
+Now with the help of the javascript I have to generate random 15 positions and put the numbers out there. Dude where is the javascript. 
