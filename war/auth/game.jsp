@@ -29,17 +29,16 @@
 
 <body>
 
-<% UserService user = UserServiceFactory.getUserService(); %>
 <br />
 <br />
 <br />
 <!--  header -->
 <div class="row">
 	<div class="eight columns">
-	<div class="welcome">Welcome <b><%= user.getCurrentUser().getEmail() %></b></div>
+	<div class="welcome">Welcome <b><%= request.getParameter("uname") %></b></div>
 	</div>
 	<div class="four columns">
-		<span class="logout"><a href="<%= user.createLogoutURL("http://www.siolabs.com/logout?ref=tambola-logout") %>">Logout</a></span>
+		<span class="logout"><a href="#">Logout</a></span>
 	</div>
 </div>
 
@@ -72,9 +71,9 @@
 	</div>
 	
 	<div class="four columns">
-		<div id="TopRow" class=" medium blue button">Top Row</div><br/><br/>
-		<div id="MiddleRow" class=" medium blue button">Middle Row</div><br/><br/>
-		<div id="BottomRow" class=" medium blue button">Bottom Row</div><br/>
+		<div id="TopRow" class=" medium blue button twelve columns">Top Row</div><br/><br/><br />
+		<div id="MiddleRow" class=" medium blue button twelve columns">Middle Row</div><br/><br/><br/>
+		<div id="BottomRow" class=" medium blue button twelve columns">Bottom Row</div><br/><br/>
 	</div>
 </div>
 

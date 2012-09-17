@@ -29,17 +29,16 @@
 
 <body>
 
-<% UserService user = UserServiceFactory.getUserService(); %>
 <br />
 <br />
 <br />
 <!--  header -->
 <div class="row">
 	<div class="eight columns">
-	<div class="welcome">Welcome <b><%= user.getCurrentUser().getEmail() %></b></div>
+	<div class="welcome">Welcome <b><%= request.getParameter("uname") %></b></div>
 	</div>
 	<div class="four columns">
-		<span class="logout"><a href="<%= user.createLogoutURL("http://www.siolabs.com/logout?ref=tambola-logout") %>">Logout</a></span>
+		<span class="logout"><a href="#">Logout</a></span>
 	</div>
 </div>
 
@@ -66,23 +65,13 @@
 		
 		</p>
 		<a id="demo" class="medium button blue">View Demo</a>
-		<a id="play" class="medium button blue">Start Playing</a>
+		<a id="play" class="medium button blue" href="game.jsp?uname=<%=request.getParameter("uname")%>">Start Playing</a>
 	</div>
 	
 	
 	<div class="four columns">
 		<!--  code here for advertisements or perks or leader board -->
-		<h4>Create User Account</h4>
-		It just takes 20 seconds
-		<hr />
-		<form class="nice">
-		My name is :<br/>
-		<input type="text" name="name" />
-		<br/>
-		My email id is :<br/>
-		<input type="text" name="email" />
-		</form>
-				
+						
 	</div>
 </div>
 

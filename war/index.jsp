@@ -32,37 +32,72 @@
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  
+  <%
+  	if(request.getParameter("status")=="000"){
+  		out.println("<script>$(document).ready(function(){$(\'#login-email\').addClass(\'error \');	});</script>");  		
+  	}
+  if(request.getParameter("status")=="001"){
+		out.println("<script>$(document).ready(function(){$(\'#email\').addClass(\'error \');	});</script>");  		
+	}
+  %>
 
 </head>
 <body>
 
   <div class="row">
-    <div class="twelve columns">
-      <h2>Welcome to Online Tambola</h2>
+    <div class="six columns">
+      <h3>Welcome to Online Tambola</h3>
       <p>This is version <strong>0.1</strong> generated on September 14, 2012.</p>
-      <hr />
-    </div>
+     </div>
+     <div class="six columns">
+     
+     	
+     <div class="row"	>
+     
+     		<br />
+     		<form action="login" method="post">
+     		<input id="log-email" type="text" name="email" placeholder="Email id" class="four columns"/>
+     		<input id="log-pass" type="password" name="passwd" placeholder="Password" class="four columns"/>
+     		<input type="submit" value="Login" class="three columns offset-by-one small button" height="30px"/>
+     		</form>	    		
+     		
+    </div>	
+     	
+     	
+     </div>
   </div>
 
   <div class="row">
     <div class="eight columns">
+    <p>We're stoked you want to play the tambola. Simply register here using your email id and start playing.</p>
+      <hr />
     </div>
 
     <div class="four columns">
-      <p>We're stoked you want to play the tambola. Simply register here using your email id and start playing.</p>
-      <hr />
-      <h4>Create User Account</h4>
+      
+      <h5>Create User Account</h5>
 		It just takes 20 seconds
 		<hr />
-		<form class="nice">
+		<form class="nice" action="createUser">
 		<input type="text" name="name" placeholder="My name is" />
 		<br/>
-		<input type="text" name="email" placeholder="My Email id is"/>
-		</form>
+		<input id="email" type="text" name="email" placeholder="My Email id is"/>
+		<br />
+		<input type="password" name="passwd" placeholder="My Password will be"/>
+		
+		<div class="row">
+		<div class="four columns">
+			<input type="submit" value="Create User" class="small blue button"/>
+			
+		</div>
+      
+      <div class="eight columns">
       <%!    UserService userService = UserServiceFactory.getUserService();%>
-      
-      <a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="medium round button">Login</a>
-      
+      	<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class="small blue button">Login Using Google Account</a>
+      </div>
+      </div>
+      </form>
     </div>
   </div>
   
