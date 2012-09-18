@@ -46,7 +46,9 @@ function checkStatus(){
 	var status = getParameterByName('status');
 	if(status === '000')
 		$('#invalid').show();
-	$('#l-email').focus();	
+	$('#l-email').focus();
+	if(status === '001')
+		$('#existing').show();
 }
 
 //function to check the login form
@@ -86,7 +88,34 @@ function getParameterByName(name)
     return decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-//function to check the create User form
+//function to check the createUser form
+function checkCreateUser(){
+	$('.error').hide();
+	
+	//check if name is empty
+	if($('#c-uname').val().trim() === ""){
+		$('#c-uname-err').show();
+		$('#c-uname').focus();
+		return false;
+	}
+	
+	//check if password is empty
+	if($('#c-email').val().trim() === ""){
+		$('#c-email-err').show();
+		$('#c-email').focus();
+		return false;
+	}
+	
+	//check if email is empty
+	if($('#c-pass').val().trim() === ""){
+		$('#c-pass-err').show();
+		$('#c-pass').focus();
+		return false;
+	}	
+	
+	
+	return true;
+}
 
 
 
@@ -132,12 +161,16 @@ function getParameterByName(name)
       <h5>Create User Account</h5>
 		It just takes 20 seconds
 		<hr />
+		<small id="existing" class="error">This email id is already used</small>
 		<form class="nice" action="createUser" onsubmit="return checkCreateUser()">
 		<input id ="c-uname" type="text" name="name" placeholder="My name is" />
+		<small id="c-uname-err" class="error">Username empty</small>
 		<br/>
 		<input id="c-email" type="text" name="email" placeholder="My Email id is"/>
+		<small id="c-email-err" class="error">Email empty</small>
 		<br />
-		<input id ="c-passwd" type="password" name="passwd" placeholder="My Password will be"/>
+		<input id ="c-pass" type="password" name="passwd" placeholder="My Password will be"/>
+		<small id="c-pass-err" class="error">Password empty</small>
 		
 		<div class="row">
 		<div class="four columns">
