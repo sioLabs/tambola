@@ -5,6 +5,8 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.EntityNotFoundException;
@@ -21,13 +23,24 @@ public class Login extends HttpServlet {
 		String email = req.getParameter("email");
 		String pass = req.getParameter("passwd");
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-	    Key key = KeyFactory.createKey("email",email );
+	    Key key = KeyFactory.createKey("User",email );
+	   
+	    System.out.println(key.getId()+" "+key.getKind()+" "+key.getName());
+	    
 	    
 	    
 	    try {
 			Entity user = datastore.get(key);
-			if(user.getProperty("passwd").equals(pass));
-			resp.sendRedirect("/auth/home.jsp?uname="+user.getProperty("name"));
+			System.out.println(pass+" "+user.getProperty("passwd"));
+			if(user.getProperty("passwd").equals(pass));{
+				HttpSession session = req.getSession();
+			    if(session.isNew()){
+			       	session.setAttribute("uname", user.getProperty("name"));
+			       	session.setAttribute("email", email);
+			    }
+			resp.sendRedirect("/auth/home.jsp");
+			
+			}
 			
 		} catch (EntityNotFoundException e) {
 			// TODO code to redirect the user to index.jsp with invalid username/password

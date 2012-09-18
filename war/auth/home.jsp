@@ -29,16 +29,21 @@
 
 <body>
 
+<%
+	if(session.getAttribute("name") == null)
+		response.sendRedirect("/index.jsp?status=002");
+%>
+
 <br />
 <br />
 <br />
 <!--  header -->
 <div class="row">
 	<div class="eight columns">
-	<div class="welcome">Welcome <b><%= request.getParameter("uname") %></b></div>
+	<div class="welcome">Welcome <b><%= session.getAttribute("uname") %></b></div>
 	</div>
 	<div class="four columns">
-		<span class="logout"><a href="#">Logout</a></span>
+		<span class="logout"><a href="/logout">Logout</a></span>
 	</div>
 </div>
 

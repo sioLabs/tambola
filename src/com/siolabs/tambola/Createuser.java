@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -26,7 +27,8 @@ public class Createuser extends HttpServlet {
 		String email = req.getParameter("email");
 		String pass = req.getParameter("passwd");
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Key userKey =  KeyFactory.createKey("uEmail", email);
+		Key userKey =  KeyFactory.createKey("User",email);
+		System.out.println(userKey.getId()+" "+userKey.getKind()+" "+userKey.getName());
 		
 		//create an email filter to check if already exists
 		Filter emailfil = new FilterPredicate("email",FilterOperator.EQUAL,email);
@@ -39,14 +41,18 @@ public class Createuser extends HttpServlet {
 			resp.sendRedirect("/index.jsp?status=001");
 		} else {
 			// TODO Auto-generated catch block
-			System.out.print("Exception generated");
 			Entity user = new Entity("User",userKey);
 			user.setProperty("name", name);
 			user.setProperty("passwd", pass);
 			user.setProperty("email", email);
-	        
 	        datastore.put(user);
-	        resp.sendRedirect("/auth/home.jsp?uname="+name);
+	        
+	        HttpSession session = req.getSession();
+	        if(session.isNew()){
+	        	session.setAttribute("uname", name);
+	        	session.setAttribute("email", email);
+	        }
+	        resp.sendRedirect("/auth/home.jsp");
 			
 		}
 		
