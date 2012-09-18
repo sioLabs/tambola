@@ -12,6 +12,11 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 public class Createuser extends HttpServlet {
 
@@ -23,10 +28,16 @@ public class Createuser extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Key userKey =  KeyFactory.createKey("uEmail", email);
 		
-		try {
-			Entity userCheck = datastore.get(userKey);
+		//create an email filter to check if already exists
+		Filter emailfil = new FilterPredicate("email",FilterOperator.EQUAL,email);
+		
+		Query q = new Query("User").setFilter(emailfil);
+		PreparedQuery pq = datastore.prepare(q);
+
+		if(pq.asIterator().hasNext())
+		{
 			resp.sendRedirect("/index.jsp?status=001");
-		} catch (EntityNotFoundException e) {
+		} else {
 			// TODO Auto-generated catch block
 			System.out.print("Exception generated");
 			Entity user = new Entity("User",userKey);
