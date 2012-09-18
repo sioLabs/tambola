@@ -25,23 +25,15 @@
   <link rel="stylesheet" href="/stylesheets/app.css">
   <link rel="stylesheet" href="/stylesheets/tambola.css">
   <link href='http://fonts.googleapis.com/css?family=Skranji' rel='stylesheet' type='text/css'>
-  
-  <script src="javascripts/modernizr.foundation.js"></script>
+  <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/formcheck.js"></script>
+  <script src="/javascripts/modernizr.foundation.js"></script>
 
   <!-- IE Fix for HTML5 Tags -->
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   
-  <%
-  	if(request.getParameter("status")=="000"){
-  		out.println("<script>$(document).ready(function(){$(\'#login-email\').addClass(\'error \');	});</script>");  		
-  	}
-  if(request.getParameter("status")=="001"){
-		out.println("<script>$(document).ready(function(){$(\'#email\').addClass(\'error \');	});</script>");  		
-	}
-  %>
-
 </head>
 <body>
 
@@ -56,10 +48,12 @@
      <div class="row"	>
      
      		<br />
-     		<form action="login" method="post">
-     		<input id="log-email" type="text" name="email" placeholder="Email id" class="four columns"/>
-     		<input id="log-pass" type="password" name="passwd" placeholder="Password" class="four columns"/>
-     		<input type="submit" value="Login" class="three columns offset-by-one small button" height="30px"/>
+     		<form action="login" method="post" onsubmit="return checkLogin()">
+     		<input id="l-email" type="text" name="email" placeholder="Email id" class="four columns"/>
+     		<small id="l-email-err" class="error">Email</small>
+     		<input id="l-pass" type="password" name="passwd" placeholder="Password" class="four columns"/>
+     		<small id="l-pass-err" class="error">Password</small>
+     		<input type="submit" value="Login"  class="three columns offset-by-one small button" height="30px"/>
      		</form>	    		
      		
     </div>	
@@ -79,12 +73,12 @@
       <h5>Create User Account</h5>
 		It just takes 20 seconds
 		<hr />
-		<form class="nice" action="createUser">
-		<input type="text" name="name" placeholder="My name is" />
+		<form class="nice" action="createUser" onsubmit="return checkCreateUser()">
+		<input id ="c-uname" type="text" name="name" placeholder="My name is" />
 		<br/>
-		<input id="email" type="text" name="email" placeholder="My Email id is"/>
+		<input id="c-email" type="text" name="email" placeholder="My Email id is"/>
 		<br />
-		<input type="password" name="passwd" placeholder="My Password will be"/>
+		<input id ="c-passwd" type="password" name="passwd" placeholder="My Password will be"/>
 		
 		<div class="row">
 		<div class="four columns">
@@ -150,7 +144,9 @@
   -->
   
   <!-- Included JS Files (Compressed) -->
-  <script src="javascripts/foundation.min.js"></script>
+  <script src="/javascripts/foundation.min.js"></script>
+  
+  
   
   <!-- Initialize JS Plugins -->
   <script src="javascripts/app.js"></script>

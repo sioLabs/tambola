@@ -12,6 +12,7 @@ First delete the existing entities. That will be done when the server will run. 
 In the mean time write the provision code. Written but not working. Only login code is working but it is also not showing the error messages. 
 Java is not working ---- so do something with the ajax. 
 
+
 Also do provisions for the javascript checking that the email, password and name cannot be empty.
 
 Learn to create index according to the email id so that same email can't be used to create accounts. 
