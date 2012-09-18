@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="/stylesheets/tambola.css">
   <link href='http://fonts.googleapis.com/css?family=Skranji' rel='stylesheet' type='text/css'>
   <script src="/javascripts/jquery.js"></script>
-  <script src="/javascripts/formcheck.js"></script>
+  <script src="/javascripts/formcheck.js" language="javascript" type="text/javascript"></script>
   <script src="/javascripts/modernizr.foundation.js"></script>
 
   <!-- IE Fix for HTML5 Tags -->
@@ -36,6 +36,61 @@
   
 </head>
 <body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.error').hide();
+	checkStatus();
+});
+
+function checkStatus(){
+	var status = getParameterByName('status');
+	if(status === '000')
+		$('#invalid').show();
+	$('#l-email').focus();	
+}
+
+//function to check the login form
+function checkLogin(){
+	
+	$('#l-email').removeClass('error');
+	$('#l-pass').removeClass('error');
+	$('.error').hide();
+
+	//check if email is empty
+	if($('#l-email').val().trim() === ""){
+		$('#l-email').addClass('error');
+		$('#l-email-err').show();
+		$('#l-email').focus();
+		return false;
+	}
+	
+	//check if password is empty
+	if($('#l-pass').val().trim() === ""){
+		$('#l-pass').addClass('error');
+		$('#l-pass-err').show();
+		$('#l-pass').focus();
+		return false;
+	}
+	return true;
+}
+//function to get response parameters
+function getParameterByName(name)
+{
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+//function to check the create User form
+
+
+
+</script>
 
   <div class="row">
     <div class="six columns">
@@ -48,16 +103,20 @@
      <div class="row"	>
      
      		<br />
-     		<form action="login" method="post" onsubmit="return checkLogin()">
-     		<input id="l-email" type="text" name="email" placeholder="Email id" class="four columns"/>
+     		<form action="login" method="post" onsubmit="return checkLogin();">
+     		<div class="four columns">
+     		<input id="l-email" type="text" name="email" placeholder="Email id"/>
      		<small id="l-email-err" class="error">Email</small>
-     		<input id="l-pass" type="password" name="passwd" placeholder="Password" class="four columns"/>
+     		</div>
+     		<div class="four columns">
+     		<input id="l-pass" type="password" name="passwd" placeholder="Password"/>
      		<small id="l-pass-err" class="error">Password</small>
-     		<input type="submit" value="Login"  class="three columns offset-by-one small button" height="30px"/>
+     		</div>
+     		<input type="submit" value="Login"  class="three columns offset-by-one small" height="30px"/>
      		</form>	    		
      		
     </div>	
-     	
+     	<small id = "invalid" class="error">Invalid email or password</small>
      	
      </div>
   </div>

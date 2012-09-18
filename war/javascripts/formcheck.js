@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).load(function(){
 	
 	$('.error').hide();
 	
@@ -7,15 +7,15 @@ $(document).ready(function(){
 		
 		$('.error').hide();
 		//check if email is empty
-		if($('#l-email').text().trim() === ""){
+		if($('#l-email').val().trim() === ""){
 			$('#l-email').addClass('error');
 			$('#l-email-err').show();
 			return false;
 		}
 		
 		//check if password is empty
-		if($('#l-pass').text().trim() === ""){
-			$('#l-padd').addClass('error');
+		if($('#l-pass').val().trim() === ""){
+			$('#l-pass').addClass('error');
 			$('#l-pass-err').show();
 			return false;
 		}
