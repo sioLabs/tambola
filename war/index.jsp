@@ -25,8 +25,6 @@
   <link rel="stylesheet" href="/stylesheets/app.css">
   <link rel="stylesheet" href="/stylesheets/tambola.css">
   <link href='http://fonts.googleapis.com/css?family=Skranji' rel='stylesheet' type='text/css'>
-  <script src="/javascripts/jquery.js"></script>
-  <script src="/javascripts/formcheck.js" language="javascript" type="text/javascript"></script>
   <script src="/javascripts/modernizr.foundation.js"></script>
 
   <!-- IE Fix for HTML5 Tags -->
@@ -37,6 +35,7 @@
 </head>
 <body>
 <script type="text/javascript">
+/*
 $(document).ready(function(){
 	$('.error').hide();
 	checkStatus();
@@ -118,7 +117,7 @@ function checkCreateUser(){
 }
 
 
-
+*/
 </script>
 
   <div class="row">
@@ -238,9 +237,11 @@ function checkCreateUser(){
   <!-- Included JS Files (Compressed) -->
   <script src="/javascripts/foundation.min.js"></script>
   
-  
+
   
   <!-- Initialize JS Plugins -->
   <script src="javascripts/app.js"></script>
+    <script src="/javascripts/jquery.js"></script>
+  <script src="/javascripts/formcheck.js" language="javascript" type="text/javascript"></script>
 </body>
 </html>
