@@ -1,0 +1,24 @@
+for the first version I am thinking  about returning all the values to the client in one go and then the client can read the json data and display it one by one, reading from an array with the help of a jquery. Also use jsp to create a 3x10 array. 
+ Writing the jsp for the game ticket.Written. 
+Now with the help of the javascript I have to generate random 15 positions and put the numbers out there. Dude where is the javascript.  Done. 
+Now take care of the front page. 
+Add authentication and use a datastore to save the username and email id. 
+Done. 
+Check the fact that a user with the same email id can not create an account again. 
+First delete the existing entities. That will be done when the server will run. Wait for that. Done
+
+
+=============WHAT THINGS ARE LEFT FOR NOW============================
+In the mean time write the provision code. Written but not working. Only login code is working but it is also not showing the error messages. 
+Java is not working ---- so do something with the ajax. 
+
+
+Also do provisions for the javascript checking that the email, password and name cannot be empty.
+
+Learn to create index according to the email id so that same email can't be used to create accounts. 
+
+Do provisions for session management. 
+
+The Game servlet is not working. Check it out. Done... Some typo problems
+
+======================================================================
