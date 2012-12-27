@@ -8,80 +8,8 @@ $(document).ready(function(){
 	var ticketNum = new Array();
 	var totalArray = new Array();
 	
-	//code to generate the ticket
 	
-		function inRange(tnum){
-			
-			check = Math.floor(tnum/9);
-		    var indx= 0;
-			for(var i =0;i<10;i++){
-				if(Math.floor(ticketNum[i]/9)===check)
-					indx++;				
-			}
-			
-			return indx;
-				
-		}
-		
-		
-		//then find 15 numbers from 1 to 80
-		//these will be the ticket numbers
-		for (var i=1;i<16;){
-			var tNum = Math.round(Math.random()*(90-1)+1);
-			if(ticketNum.indexOf(tNum)===-1 && inRange(tNum)<3){
-				ticketNum.push(tNum);
-				i++;
-				$('#testValue').text(ticketNum.length);
-			}			
-		}
-				
-		
-		//numPos.sort();
-		ticketNum.sort();
-		ticketNum.reverse();
-		
-		//find its position
-		for(var i=1;i<16;i++){
-			var num = ticketNum.pop();
-			var col = Math.floor(num/9);
-			col = col + 1;
-			num2 = num % 9;
-			var loc1 = '#1_'+col;
-			var loc2 = '#2_'+col;
-			var loc3 = '#3_'+col;
-			if(num2>=0 && num2 <4){
-				if($(loc1).text()!=''){
-					if($(loc2).text()!='')
-						$(loc3).text(num);
-					else 
-						$(loc2).text(num);
-				}
-				else
-					$(loc1).text(num);
-			}
-			
-			if(num2>=4 && num2 <7){
-				if($(loc2).text()!=''){
-					if($(loc3).text()!='')
-						$(loc1).text(num)
-					else 
-						$(loc3).text(num);
-				}
-				else
-					$(loc2).text(num);
-			}
-			
-			if(num2>=7 && num2 <10){
-				if($(loc3).text()!=''){
-					if($(loc1).text()!='')
-						$(loc3).text(num);
-					else 
-						$(loc1).text(num);
-				}
-				else
-					$(loc3).text(num);
-			}	
-		}	
+	
 	//make ajax request to know the numbers.
 	$.get(
 			loadUrl,
@@ -95,6 +23,131 @@ $(document).ready(function(){
 			}
 	);
 	
+	alert('till her');
+	
+	//code to generate the ticket
+	
+		function inRange(tnum){
+			
+			check = Math.ceil(tnum/9);
+			
+			//alert(check +" "+tNum);
+		    var indx = 0;
+		    var indy = 0;
+			for(var i =0;i<ticketNum.length;i++){  //why 10
+				var c2 = ticketNum[i] % 9;
+				if(Math.ceil(ticketNum[i]/9)===check)
+					indx++;
+				if((c2===0) ||( c2 >=7 ))
+					indy++;
+				else if((c2>1)  && (c2< 4))
+					indy++;
+				else if((c2>=4) && (c2<7))
+					indy++;
+				else 
+					indy = indy;
+			}	
+			
+			if((indx >3 ) || (indy>5))
+				return 4;				
+			else
+				return 1;  
+		}
+		
+		
+		//then find 15 numbers from 1 to 80
+		//these will be the ticket numbers
+		for (var i=1;i<16;){
+			var tNum = Math.round(Math.random()*(90-1)+1);
+			if((ticketNum.indexOf(tNum) < 0) && (inRange(tNum)<4)){
+				ticketNum.push(tNum);
+				i++;
+				$('#testValue').text(ticketNum.length);
+			}			
+		}
+		
+		//alert(ticketNum.length);
+		function totNum(){
+			g = ticketNum;
+			for(var i in g){
+				ticketNum[i] = parseInt(g[i]);
+			}
+		}
+		
+		//array to sort the numbers
+		function bSort(arr){
+			
+			var temp, i,j;
+			for(i=0;i<arr.length;i++){
+				for(j=0;j<arr.length-i-1;j++){
+					if(arr[j]<arr[j+1]){
+						temp = arr[j];
+						arr[j] = arr[j+1];
+						arr[j+1] = temp;
+					}
+				}
+			}
+			
+		}
+				
+		totNum();
+		//numPos.sort();
+		bSort(ticketNum);
+		
+		
+		$('#testValue').text(ticketNum);
+		
+		//find its position
+		for(var i=1;i<16;i++){
+			var num = ticketNum.pop();
+			alert(num);
+			var col = Math.floor(num/9);
+			col = col+1;
+			num2 = num % 9;
+			var loc1 = '#1_'+col;
+			var loc2 = '#2_'+col;
+			var loc3 = '#3_'+col;
+			
+					
+			if((num2>=1) && (num2 <4)){
+				if($(loc1).text()!=''){
+					if($(loc2).text()!=''){
+						$(loc3).text(num);
+					}
+					else 
+						$(loc2).text(num);
+				}
+				else
+					$(loc1).text(num);
+			}
+			
+			if((num2>=4) && (num2 <7)){
+				if($(loc2).text()!=''){
+					if($(loc3).text()!='')
+						$(loc1).text(num)
+					else 
+						$(loc3).text(num);
+				}
+				else
+					$(loc2).text(num);
+			}
+			
+			if((num2>=7) || (num2 ==0)){
+				if($(loc3).text()!=''){
+					if($(loc1).text()!='')
+						$(loc2).text(num);
+					else 
+						$(loc1).text(num);
+				}
+				else
+					$(loc3).text(num);
+			}	
+		}	
+		
+		
+		//Now arrange the ticket numbers in increasing order
+
+	
 	//show the numbers to the screen
 	var idx = 0;
 	var iter =1;
@@ -107,19 +160,29 @@ $(document).ready(function(){
 			if(iter>90)
 				clearInterval(interval);
 		
-	}, 6);
+	}, 1000);
 	
 	
 	//create the numbers striked through and what numbers are striked through
 	$('.num').click(function(){
-		
-		if($(this).text() != ''){
-			if(strikeNum.indexOf($(this).text())===-1){
-				$(this).css('text-decoration', 'line-through');
-				count = count + 1;
-				strikeNum[count-1] = $(this).text();
-				$('#winner').text(strikeNum);
+		totalArray = num.slice(0,idx-1);
+		toNum();
+		var ch1 = $(this).text();
+		ch1 = parseInt(ch1);
+		//alert(ch1+10);
+		if(ch1){
+			//alert(totalArray.indexOf(ch1));
+			if(totalArray.indexOf(ch1) > 0){
+				if(strikeNum.indexOf(ch1) < 0){
+					$(this).css('text-decoration', 'line-through');
+					count = count + 1;
+					strikeNum[count-1] = ch1;
+					//$('#winner').text(strikeNum);
+				}
 			}
+		}
+		else{//code when it is blank
+			alert('someproble,');
 		}
 	});
 	
@@ -203,6 +266,7 @@ $(document).ready(function(){
 			totalArray[i] = +totalArray[i];
 		}
 	}
+	
 	
 	
 	//code to check which numbers are present in the array

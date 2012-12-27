@@ -95,7 +95,7 @@
 <div id = "testValue3"></div>
 
 <script src="/javascripts/jquery.js"></script>
- <script src="/javascripts/tambola.js"></script>
+<script src="/javascripts/tambola.js"></script>
  
 </body>
 </html>
