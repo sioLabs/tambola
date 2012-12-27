@@ -7,46 +7,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.google.appengine.api.datastore.Entity;
+import com.googlecode.objectify.Ref;
+import com.googlecode.objectify.annotation.Entity;
+import entities.User;
+import static com.siolabs.tambola.OfyService.ofy;
+
 
 
 
 public class Login extends HttpServlet {
 	
+	
+	
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws IOException {
+		
 		String email = req.getParameter("email");
 		String pass = req.getParameter("passwd");
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-	    Key key = KeyFactory.createKey("User",email );
-	   
-	    System.out.println(key.getId()+" "+key.getKind()+" "+key.getName());
-	    
-	    
-	    
-	    try {
-			Entity user = datastore.get(key);
-			System.out.println(pass+" "+user.getProperty("passwd"));
-			if(user.getProperty("passwd").equals(pass));{
+		
+		System.out.println(email+"  "+pass);
+		User u = ofy().load().type(User.class).id(email).get();
+		
+		
+		// if the user is not found then do this 
+		if(null == u ){
+			System.out.println("no user found");
+			resp.sendRedirect("/index.jsp?status=000");
+		}
+		else{
+			//the user is found match the password
+			System.out.println("some found");
+			if(u.password.equals(pass)){
+				System.out.println("pass match");
 				HttpSession session = req.getSession();
-			    if(session.isNew()){
-			       	session.setAttribute("uname", user.getProperty("name"));
+				
+			    
+			       	session.setAttribute("name", u.name);
 			       	session.setAttribute("email", email);
-			    }
-			resp.sendRedirect("/auth/home.jsp");
+			    
+			    resp.sendRedirect("/auth/home.jsp");
 			
 			}
+			else{
+				System.out.println("pass not match");
+				resp.sendRedirect("/index.jsp?status=000");
+			}				
 			
-		} catch (EntityNotFoundException e) {
-			// TODO code to redirect the user to index.jsp with invalid username/password
-			resp.sendRedirect("/index.jsp?status=000");
-			
-		}
+		} 
 		
 		
 	}

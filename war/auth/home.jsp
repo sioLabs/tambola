@@ -45,7 +45,7 @@
 	<div class="row">
 		<div class="eight columns">
 			<div class="welcome">
-				Welcome <b><%= session.getAttribute("uname") %></b>
+				Welcome <b><%= session.getAttribute("name") %></b>
 			</div>
 		</div>
 		<div class="four columns">
@@ -79,7 +79,7 @@
 			</p>
 			<a id="demo" class="medium button blue">View Demo</a> <a id="play"
 				class="medium button blue"
-				href="game.jsp?uname=<%=request.getParameter("uname")%>">Start
+				href="game.jsp?uname=<%=request.getParameter("name")%>">Start
 				Playing</a>
 		</div>
 

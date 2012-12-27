@@ -2,6 +2,8 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+
+
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
@@ -34,91 +36,8 @@
   
 </head>
 <body>
-<script type="text/javascript">
-/*
-$(document).ready(function(){
-	$('.error').hide();
-	checkStatus();
-});
-
-function checkStatus(){
-	var status = getParameterByName('status');
-	if(status === '000')
-		$('#invalid').show();
-	$('#l-email').focus();
-	if(status === '001')
-		$('#existing').show();
-}
-
-//function to check the login form
-function checkLogin(){
-	
-	$('#l-email').removeClass('error');
-	$('#l-pass').removeClass('error');
-	$('.error').hide();
-
-	//check if email is empty
-	if($('#l-email').val().trim() === ""){
-		$('#l-email').addClass('error');
-		$('#l-email-err').show();
-		$('#l-email').focus();
-		return false;
-	}
-	
-	//check if password is empty
-	if($('#l-pass').val().trim() === ""){
-		$('#l-pass').addClass('error');
-		$('#l-pass-err').show();
-		$('#l-pass').focus();
-		return false;
-	}
-	return true;
-}
-//function to get response parameters
-function getParameterByName(name)
-{
-  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-  var regexS = "[\\?&]" + name + "=([^&#]*)";
-  var regex = new RegExp(regexS);
-  var results = regex.exec(window.location.search);
-  if(results == null)
-    return "";
-  else
-    return decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
-//function to check the createUser form
-function checkCreateUser(){
-	$('.error').hide();
-	
-	//check if name is empty
-	if($('#c-uname').val().trim() === ""){
-		$('#c-uname-err').show();
-		$('#c-uname').focus();
-		return false;
-	}
-	
-	//check if password is empty
-	if($('#c-email').val().trim() === ""){
-		$('#c-email-err').show();
-		$('#c-email').focus();
-		return false;
-	}
-	
-	//check if email is empty
-	if($('#c-pass').val().trim() === ""){
-		$('#c-pass-err').show();
-		$('#c-pass').focus();
-		return false;
-	}	
-	
-	
-	return true;
-}
 
 
-*/
-</script>
 
   <div class="row">
     <div class="six columns">
@@ -243,5 +162,90 @@ function checkCreateUser(){
   <script src="javascripts/app.js"></script>
     <script src="/javascripts/jquery.js"></script>
   <script src="/javascripts/formcheck.js" language="javascript" type="text/javascript"></script>
+  <script type="text/javascript">
+
+$(document).ready(function(){
+	$('.error').hide();
+	checkStatus();
+});
+
+function checkStatus(){
+	var status = getParameterByName('status');
+	if(status === '000')
+		$('#invalid').show();
+	$('#l-email').focus();
+	if(status === '001')
+		$('#existing').show();
+}
+
+//function to check the login form
+function checkLogin(){
+	
+	$('#l-email').removeClass('error');
+	$('#l-pass').removeClass('error');
+	$('.error').hide();
+
+	//check if email is empty
+	if($('#l-email').val().trim() === ""){
+		$('#l-email').addClass('error');
+		$('#l-email-err').show();
+		$('#l-email').focus();
+		return false;
+	}
+	
+	//check if password is empty
+	if($('#l-pass').val().trim() === ""){
+		$('#l-pass').addClass('error');
+		$('#l-pass-err').show();
+		$('#l-pass').focus();
+		return false;
+	}
+	return true;
+}
+//function to get response parameters
+function getParameterByName(name)
+{
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return "";
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+//function to check the createUser form
+function checkCreateUser(){
+	$('.error').hide();
+	
+	//check if name is empty
+	if($('#c-uname').val().trim() === ""){
+		$('#c-uname-err').show();
+		$('#c-uname').focus();
+		return false;
+	}
+	
+	//check if password is empty
+	if($('#c-email').val().trim() === ""){
+		$('#c-email-err').show();
+		$('#c-email').focus();
+		return false;
+	}
+	
+	//check if email is empty
+	if($('#c-pass').val().trim() === ""){
+		$('#c-pass-err').show();
+		$('#c-pass').focus();
+		return false;
+	}	
+	
+	
+	return true;
+}
+
+
+
+</script>
 </body>
 </html>

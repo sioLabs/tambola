@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
@@ -19,6 +18,10 @@ import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 
+import entities.User;
+import static com.siolabs.tambola.OfyService.ofy;
+
+
 public class Createuser extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -26,36 +29,23 @@ public class Createuser extends HttpServlet {
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
 		String pass = req.getParameter("passwd");
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Key userKey =  KeyFactory.createKey("User",email);
-		System.out.println(userKey.getId()+" "+userKey.getKind()+" "+userKey.getName());
 		
-		//create an email filter to check if already exists
-		Filter emailfil = new FilterPredicate("email",FilterOperator.EQUAL,email);
+		User u = ofy().load().type(User.class).id(email).get();
 		
-		Query q = new Query("User").setFilter(emailfil);
-		PreparedQuery pq = datastore.prepare(q);
-
-		if(pq.asIterator().hasNext())
-		{
+		if(null != u){
 			resp.sendRedirect("/index.jsp?status=001");
-		} else {
-			// TODO Auto-generated catch block
-			Entity user = new Entity("User",userKey);
-			user.setProperty("name", name);
-			user.setProperty("passwd", pass);
-			user.setProperty("email", email);
-	        datastore.put(user);
-	        
-	        HttpSession session = req.getSession();
+		}
+		else{
+			u = new User( email,name,pass);
+			ofy().save().entity(u);
+			HttpSession session = req.getSession();
 	        if(session.isNew()){
-	        	session.setAttribute("uname", name);
+	        	session.setAttribute("name", name);
 	        	session.setAttribute("email", email);
 	        }
 	        resp.sendRedirect("/auth/home.jsp");
 			
 		}
-		
 		
 		
 		
