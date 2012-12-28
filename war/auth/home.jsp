@@ -23,7 +23,7 @@
 <link href='http://fonts.googleapis.com/css?family=Bubbler+One'
 	rel='stylesheet' type='text/css'>
 
-<script src="/javascripts/modernizr.foundation.js"></script>
+
 
 <!-- IE Fix for HTML5 Tags -->
 <!--[if lt IE 9]>
@@ -102,7 +102,8 @@
 		</div>
 	</div>
 
+	<script src="/javascripts/jquery.js"></script>
+		<script src="/javascripts/modernizr.foundation.js"></script>
 
-	<script src="/javascripts/tambola.js"></script>
 </body>
 </html>

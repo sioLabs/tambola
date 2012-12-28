@@ -23,49 +23,118 @@ $(document).ready(function(){
 			}
 	);
 	
-	alert('till her');
-	
-	//code to generate the ticket
-	
-		function inRange(tnum){
+//	//alert('till her');
+	var ind1 = 0;
+	var ind2 = 0;
+	var ind3 = 0;
+//	
+//	
+//	//code to generate the ticket
+//	
+//		function inRange(tnum){
+//			
+//			var flag = 0;
+//			check = Math.ceil(tnum/9);
+//			var c2 = Math.ceil(tnum%9);
+//			if((c2===0) ||( c2 >=7 )){
+//				if(ind3>4)
+//					flag=1;
+//				else
+//				ind3++;
+//			}
+//			else if((c2>=1)  && (c2< 4)){
+//				if(ind1>4)
+//					flag=1;
+//				else
+//				ind1++;
+//			}
+//			else {
+//				if(ind2>4)
+//					flag=1;
+//				else
+//				ind2++;
+//			}
+//			
+//			
+//		    var indx = 0; //to check if not in same 1-9 range
+//		    for(var i =0;i<ticketNum.length;i++){  //why 10
+//				if(Math.ceil(ticketNum[i]/9)===check)
+//					indx++;
+//			}
+//		    
+//		    //alert(tNum + " "+indx+ " "+ind1 +  " "+ind2+ " "+ind3);
+//			if((indx >3 ) || (flag===1))
+//				return 4;				
+//			else
+//				return 1;  
+//		}
+		
+		function checkCol(tnum){
+			var indx=0;
 			
-			check = Math.ceil(tnum/9);
-			
-			//alert(check +" "+tNum);
-		    var indx = 0;
-		    var indy = 0;
-			for(var i =0;i<ticketNum.length;i++){  //why 10
-				var c2 = ticketNum[i] % 9;
-				if(Math.ceil(ticketNum[i]/9)===check)
+			var c =Math.floor(tnum/9);
+			var d = tnum%9;
+			if(d===0)
+				c=c-1;
+			for(var i =0;i<ticketNum.length;i++){
+				
+				if(Math.floor(ticketNum[i]/9) === c)
 					indx++;
-				if((c2===0) ||( c2 >=7 ))
-					indy++;
-				else if((c2>1)  && (c2< 4))
-					indy++;
-				else if((c2>=4) && (c2<7))
-					indy++;
-				else 
-					indy = indy;
-			}	
+			}
 			
-			if((indx >3 ) || (indy>5))
-				return 4;				
+			
+			//alert(tnum+" "+indx+" "+c);
+			if(d===0)
+				return indx+1;
 			else
-				return 1;  
+				return indx;		
+		}
+		
+		function checkRow(tnum){
+			//var indR = 0;
+			var c = tnum % 9;
+			///
+			alert(tnum+" "+c);
+			if((c===0) ||( c >=7 )){
+				ind3++;
+				return ind3;
+			}
+			else if((c>=1)  && (c< 4)){
+				ind1++;
+				return ind1;
+			}
+			else {
+				ind2++;
+				return ind2;
+			}
+			
+			///////
+			
+//			for(var i=0;i<ticketNum.length;i++){
+//				var c2 = ticketNum[i]%9;
+//				if((ticketNum[i]%9) === c)
+//					indR++;
+//			}
+//			alert(tnum+" "+indR);
+			//return indR;
 		}
 		
 		
 		//then find 15 numbers from 1 to 80
 		//these will be the ticket numbers
-		for (var i=1;i<16;){
-			var tNum = Math.round(Math.random()*(90-1)+1);
-			if((ticketNum.indexOf(tNum) < 0) && (inRange(tNum)<4)){
+		for(var i=1;i<16;){
+			var tNum = Math.round(Math.random()*(90-1)+1);			
+			if((ticketNum.indexOf(tNum) < 0) && (checkCol(tNum)<4) && (checkRow(tNum)<=5)){
+				
 				ticketNum.push(tNum);
 				i++;
 				$('#testValue').text(ticketNum.length);
-			}			
+			}
+			else
+				alert(tNum+" failed");
 		}
 		
+		//alert('till her');
 		//alert(ticketNum.length);
 		function totNum(){
 			g = ticketNum;
@@ -87,7 +156,6 @@ $(document).ready(function(){
 					}
 				}
 			}
-			
 		}
 				
 		totNum();
@@ -104,10 +172,11 @@ $(document).ready(function(){
 			var col = Math.floor(num/9);
 			col = col+1;
 			num2 = num % 9;
+			if(num2===0)
+				col = col-1;
 			var loc1 = '#1_'+col;
 			var loc2 = '#2_'+col;
 			var loc3 = '#3_'+col;
-			
 					
 			if((num2>=1) && (num2 <4)){
 				if($(loc1).text()!=''){
