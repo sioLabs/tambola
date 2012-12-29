@@ -1,49 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
     <title>Tambola by sioLabs</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
+
   <body>
-    <div class="wrapper">
+    <a id="forkme_banner" href="https://github.com/sioLabs/tambola">View on GitHub</a>
+    <div class="shell">
+
       <header>
-        <h1>Tambola</h1>
-        <p>online tambola</p>
-
-        <p class="view"><a href="https://github.com/sioLabs/tambola">View the Project on GitHub <small>sioLabs/tambola</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/sioLabs/tambola/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/sioLabs/tambola/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/sioLabs/tambola">View On <strong>GitHub</strong></a></li>
-        </ul>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Tambola</h1>
+            <h2>online tambola</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
       </header>
-      <section>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/sioLabs/tambola/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/sioLabs/tambola/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
         <h1><strong>tambola</strong></h1>
 
 <p>This is a online tambola playing web application. </p>
 
+<p>Presently many users can play the same game but the notification of winner is not done</p>
+
 <blockquote>
-<p>It is written teach the basics of google appengine to students.</p>
+<p>It is written to teach the basics of google appengine to students.</p>
 </blockquote>
 
-<p><em>Ashutosh Singh</em></p>
+<p>This project implements following from <strong>google app engine</strong> and <strong>objectify library</strong></p>
+
+<ul>
+<li>The folder structure of publishing apps on google app engine in Java.</li>
+<li>How to save and retrieve data from the google datastore using the <em>objectify library</em>
+</li>
+</ul><p>For the frontend of the application I have used a very good responsive framework by <a href="http://zurb.com">Zurb</a> known as <a href="http://foundation.zurb.com">Foundation</a></p>
+
+<p>There are very good technologies. This project uses the least use of that but in the end </p>
+
+<blockquote>
+<p>It's just to light the fire inside you</p>
+</blockquote>
+
+<p><a href="http://facebook.com/t0m.ashu">Ashutosh Singh</a></p>
       </section>
+
       <footer>
-        <p>This project is maintained by <a href="https://github.com/sioLabs">sioLabs</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/sioLabs">sioLabs</a> can be found on <a href="https://github.com/sioLabs/tambola">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
       </footer>
+
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
   </body>
 </html>
