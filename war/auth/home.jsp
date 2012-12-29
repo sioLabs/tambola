@@ -77,10 +77,8 @@
 			</ul>
 
 			</p>
-			<a id="demo" class="medium button blue">View Demo</a> <a id="play"
-				class="medium button blue"
-				href="game.jsp?uname=<%=request.getParameter("name")%>">Start
-				Playing</a>
+			<a id="demo" class="medium button blue">View Demo</a> 
+			<a id="play" class="medium button blue"	href="game.jsp?name=<%=session.getAttribute("name")%>">Start Playing</a>
 		</div>
 
 
@@ -92,15 +90,16 @@
 
 
 	<!-- footer -->
-	<div class="row">
-		<div class="twelve columns links">
-			<!-- get the footer here -->
-			<a href="http://siolabs.com/about-tambola">About</a> <a
-				href="http://siolabs.com/team-tambola">Team</a> <a
-				href="http://siolabs.com/blog-tambola">Blog</a> <a
-				href="http://github.com/siolabs/tambola">Source Code</a>
-		</div>
+  <div class="row">
+	<div class="twelve columns links">
+		<!-- get the footer here -->
+		<hr />
+		<a href = "https://github.com/sioLabs/tambola#readme">About</a>
+		<a href = "http://facebook.com/t0m.ashu">Team</a>
+		<a href = "http://blog.siolabs.com">Blog</a>
+		<a href = "http://siolabs.github.com/tambola">Source Code</a>
 	</div>
+</div>
 
 	<script src="/javascripts/jquery.js"></script>
 		<script src="/javascripts/modernizr.foundation.js"></script>

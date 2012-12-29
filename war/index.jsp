@@ -59,7 +59,7 @@
      		<input id="l-pass" type="password" name="passwd" placeholder="Password"/>
      		<small id="l-pass-err" class="error">Password</small>
      		</div>
-     		<input type="submit" value="Login"  class="three columns offset-by-one small" height="30px"/>
+     		<input type="submit" value="Login"  class="three columns small button" height="30px"/>
      		</form>	    		
      		
     </div>	
@@ -110,12 +110,13 @@
   <div class="row">
 	<div class="twelve columns links">
 		<!-- get the footer here -->
-		<a href = "http://siolabs.com/about-tambola">About</a>
-		<a href = "http://siolabs.com/team-tambola">Team</a>
-		<a href = "http://siolabs.com/blog-tambola">Blog</a>
-		<a href = "http://github.com/siolabs/tambola">Source Code</a>
+		<a href = "https://github.com/sioLabs/tambola#readme">About |</a>
+		<a href = "http://facebook.com/t0m.ashu"> Team |</a>
+		<a href = "http://blog.siolabs.com"> Blog |</a>
+		<a href = "http://siolabs.github.com/tambola">Source Code</a>
 	</div>
 </div>
+
 
   
   

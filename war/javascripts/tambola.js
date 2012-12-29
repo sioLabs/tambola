@@ -113,7 +113,7 @@ $(document).ready(function(){
 			if(iter>90)
 				clearInterval(interval);
 		
-	}, 10);
+	}, 10000);
 	
 	
 	//create the numbers striked through and what numbers are striked through

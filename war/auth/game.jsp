@@ -35,7 +35,7 @@
 <!--  header -->
 <div class="row">
 	<div class="eight columns">
-	<div class="welcome">Welcome <b><%= request.getParameter("uname") %></b></div>
+	<div class="welcome">Welcome <b><%= session.getAttribute("name") %></b></div>
 	</div>
 	<div class="four columns">
 		<span class="logout"><a href="#">Logout</a></span>
@@ -83,10 +83,10 @@
 	<div class="twelve columns links">
 		<!-- get the footer here -->
 		<hr />
-		<a href = "http://siolabs.com/about-tambola">About</a>
-		<a href = "http://siolabs.com/team-tambola">Team</a>
-		<a href = "http://siolabs.com/blog-tambola">Blog</a>
-		<a href = "http://github.com/siolabs/tambola">Source Code</a>
+		<a href = "https://github.com/sioLabs/tambola#readme">About</a>
+		<a href = "http://facebook.com/t0m.ashu">Team</a>
+		<a href = "http://blog.siolabs.com">Blog</a>
+		<a href = "http://siolabs.github.com/tambola">Source Code</a>
 	</div>
 </div>
 
