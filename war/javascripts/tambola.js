@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	var loadUrl =  '/getnum?ind=1'; //url to get the numbers.
-	count = 0;
+	var count = 0;
 	strikeNum = new Array();
 	var num;
 	var numPos = new Array();
@@ -119,6 +119,7 @@ $(document).ready(function(){
 	//create the numbers striked through and what numbers are striked through
 	$('.num').click(function(){
 		totalArray = num.slice(0,idx-1);
+		//$('#testValue').text(totalArray);
 		toNum();
 		var ch1 = $(this).text();
 		ch1 = parseInt(ch1);
@@ -134,8 +135,8 @@ $(document).ready(function(){
 				}
 			}
 		}
-		else{//code when it is blank
-		
+		else{
+			//code when it is blank cell		
 		}
 	});
 	
@@ -158,10 +159,11 @@ $(document).ready(function(){
 		var flag = 0;
 		for(var i = 1;i<=10;i++){
 			loc = '#1_'+i;
+			//alert($(loc).text());
 			var val = $(loc).text();
 			if(val !=''){
 				val2 = parseInt(val);
-				if((strikeNum.indexOf(val)===-1 )|| (totalArray.indexOf(val2)===-1)){
+				if((strikeNum.indexOf(val2)===-1 )|| (totalArray.indexOf(val2)===-1)){
 					flag = 1;
 				}
 			}	
@@ -182,7 +184,7 @@ $(document).ready(function(){
 			var val = $(loc).text();
 			if(val !=''){
 				val2 = parseInt(val);
-				if(strikeNum.indexOf(val)===-1|| (totalArray.indexOf(val2)===-1)){
+				if(strikeNum.indexOf(val2)===-1|| (totalArray.indexOf(val2)===-1)){
 					flag = 1;
 				}
 			}	
@@ -203,7 +205,7 @@ $(document).ready(function(){
 			var val = $(loc).text();
 			if(val !=''){
 				val2 = parseInt(val);
-				if(strikeNum.indexOf(val)===-1|| (totalArray.indexOf(val2)===-1)){
+				if(strikeNum.indexOf(val2)===-1|| (totalArray.indexOf(val2)===-1)){
 					flag = 1;
 				}
 			}	
@@ -224,7 +226,7 @@ $(document).ready(function(){
 	
 	//code to check which numbers are present in the array
 	$('#TopRow').click(function(){
-		$('#testValue').text(ticketNum);
+		//$('#testValue').text(strikeNum);
 		totalArray = num.slice(0,idx-1);
 		toNum();
 		//$('#testValue').text(totalArray);
